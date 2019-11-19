@@ -42,6 +42,8 @@ class Resize(object):
         size = self.get_size(image.size)
         image = F.resize(image, size)
         return image
+
+
 class COCODemo(object):
     # COCO categories for pretty print
     CATEGORIES = [
@@ -188,7 +190,7 @@ class COCODemo(object):
         transform = T.Compose(
             [
                 T.ToPILImage(),
-                Resize(min_size, max_size),
+                T.Resize(self.min_image_size),
                 T.ToTensor(),
                 to_bgr_transform,
                 normalize_transform,
@@ -326,11 +328,16 @@ class COCODemo(object):
         colors = self.compute_colors_for_labels(labels).tolist()
 
         for mask, color in zip(masks, colors):
+            #thresh = mask[0, :, :, None].astype(np.uint8)
+            #contours, hierarchy = cv2_util.findContours(
+            #    thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE
+            #)
+            #image = cv2.drawContours(image, contours, -1, color, 3)
             thresh = mask[0, :, :, None].astype(np.uint8)
-            contours, hierarchy = cv2_util.findContours(
-                thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE
-            )
-            image = cv2.drawContours(image, contours, -1, color, 3)
+            redImg = np.zeros(image.shape, image.dtype)
+            redImg[:, :] = color
+            redMask = cv2.bitwise_and(redImg, redImg, mask=thresh)
+            cv2.addWeighted(redMask, 1, image, 1, 0, image)
 
         composite = image
 
@@ -401,7 +408,7 @@ class COCODemo(object):
             x, y = box[:2]
             s = template.format(label, score)
             cv2.putText(
-                image, s, (x, y), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 255, 255), 1
+                image, s, (x, y), cv2.FONT_HERSHEY_SIMPLEX, .6, (255, 255, 255), 1
             )
 
         return image
