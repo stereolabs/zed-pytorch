@@ -47,7 +47,7 @@ conda install --yes --file requirements.txt
 #### Using Pip
 
 ```bash
-pip3 install torch torchvision
+pip3 install torch==1.4.0+cu100 torchvision==0.5.0+cu100 -f https://download.pytorch.org/whl/torch_stable.html
 pip3 install -r requirements.txt
 ```
 
