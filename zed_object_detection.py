@@ -2,9 +2,9 @@
 import argparse
 import cv2
 
-from maskrcnn_benchmark.config import cfg
+from maskrcnn.config import cfg
 from predictor import COCODemo
-from maskrcnn_benchmark.structures.keypoint import PersonKeypoints
+from maskrcnn.structures.keypoint import PersonKeypoints
 
 import time
 import torch
@@ -135,7 +135,7 @@ def main():
     parser = argparse.ArgumentParser(description="PyTorch Object Detection Webcam Demo")
     parser.add_argument(
         "--config-file",
-        default="../configs/caffe2/e2e_mask_rcnn_X_101_32x8d_FPN_1x_caffe2.yaml",
+        default="configs/caffe2/e2e_mask_rcnn_X_101_32x8d_FPN_1x_caffe2.yaml",
         metavar="FILE",
         help="path to config file",
     )

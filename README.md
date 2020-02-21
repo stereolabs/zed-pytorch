@@ -4,7 +4,7 @@ The ZED SDK can be interfaced with Pytorch for adding 3D localization of custom 
 
 <!---  ![alt text](ZED_demo.jpg) --->
 <p align="center">
-  <img src="ZED_demo.jpg" width=800 height=470>
+  <img src="other/ZED_demo.jpg" width=800 height=470>
 </p>
 
 # Installation
@@ -15,9 +15,7 @@ The 3D Object Detection project depends on the following libraries:
 
 * Python 3
 * CUDA
-* ZED SDK
-* ZED Python API
-* cuDNN
+* ZED SDK (Python API)
 * Pytorch
 * OpenCV
 
@@ -65,8 +63,7 @@ We provide a simple webcam demo that illustrates how you can use `maskrcnn` for 
 
 
 ```bash
-cd demo
-python zed_object_detection.py --config-file ../configs/caffe2/e2e_mask_rcnn_R_50_C4_1x_caffe2.yaml --min-image-size 256
+python zed_object_detection.py --config-file configs/caffe2/e2e_mask_rcnn_R_50_C4_1x_caffe2.yaml --min-image-size 256
 ```
 
 ```bash
@@ -77,13 +74,13 @@ python zed_object_detection.py --svo-filename path/to/svo_file.svo
 python zed_object_detection.py --min-image-size 800
 
 # or change the model that you want to use
-python zed_object_detection.py --config-file ../configs/caffe2/e2e_mask_rcnn_R_101_FPN_1x_caffe2.yaml --min-image-size 300
+python zed_object_detection.py --config-file configs/caffe2/e2e_mask_rcnn_R_101_FPN_1x_caffe2.yaml --min-image-size 300
 
 # in order to see the probability heatmaps, pass --show-mask-heatmaps
 python zed_object_detection.py --min-image-size 300 --show-mask-heatmaps
 
 # for the keypoint demo
-python zed_object_detection.py --config-file ../configs/caffe2/e2e_keypoint_rcnn_R_50_FPN_1x_caffe2.yaml --min-image-size 300
+python zed_object_detection.py --config-file configs/caffe2/e2e_keypoint_rcnn_R_50_FPN_1x_caffe2.yaml --min-image-size 300
 
 # can also run it on the CPU
 python zed_object_detection.py --min-image-size 300 MODEL.DEVICE cpu
@@ -93,4 +90,4 @@ The model are downloaded automatically
 
 ## Model Zoo and Baselines
 
-Pre-trained models can be found in [MODEL_ZOO.md](MODEL_ZOO.md)
+Pre-trained models can be found in [other/MODEL_ZOO.md](MODEL_ZOO.md)
