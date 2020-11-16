@@ -18,6 +18,7 @@ The 3D Object Detection project depends on the following libraries:
 * ZED SDK (Python API)
 * Pytorch
 * OpenCV
+* Apex
 
 ## Getting Started
 
@@ -42,6 +43,8 @@ conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
 conda install --yes --file requirements.txt
 ```
 
+*Note: Do not forget to install [Python API](/app-development/python/install/) inside your current environment.*
+
 #### Using Pip
 
 ```bash
@@ -51,14 +54,29 @@ pip3 install -r requirements.txt
 
 For more information please refer to this page https://pytorch.org/get-started/locally/.
 
-### MaskRCNN Installation
+### Apex Installation
+
+We make use of NVIDIA's [Apex](https://github.com/NVIDIA/apex) API. To install it, run the following:
 
 ```bash
-python3 setup.py install
+$ git clone https://github.com/NVIDIA/apex
+$ cd apex
+$ python3 setup.py install
+```
+
+### Mask R-CNN Installation
+
+Setup Mask R-CNN. If you're using a conda environment, make sure it is still active before running the following commands.
+
+```bash
+$ git clone https://github.com/facebookresearch/maskrcnn-benchmark.git
+$ cd maskrcnn-benchmark
+$ python setup.py install
 ```
 
 ## Running the sample
 
+Download the sample code from this repository.
 We provide a simple webcam demo that illustrates how you can use `maskrcnn` for inference :
 
 
@@ -90,4 +108,4 @@ The model are downloaded automatically
 
 ## Model Zoo and Baselines
 
-Pre-trained models can be found in [other/MODEL_ZOO.md](MODEL_ZOO.md)
+Pre-trained models can be found in [other/MODEL_ZOO.md](other/MODEL_ZOO.md)

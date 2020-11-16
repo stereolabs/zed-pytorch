@@ -2,3 +2,5 @@ ninja
 cython
 matplotlib
 tqdm
+opencv
+yacs
