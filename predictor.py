@@ -406,6 +406,8 @@ class COCODemo(object):
         template = "{}: {:.2f}"
         for box, score, label in zip(boxes, scores, labels):
             x, y = box[:2]
+            x = x.to(dtype = torch.int)
+            y = y.to(dtype = torch.int)
             s = template.format(label, score)
             cv2.putText(
                 image, s, (x, y), cv2.FONT_HERSHEY_SIMPLEX, .6, (255, 255, 255), 1
