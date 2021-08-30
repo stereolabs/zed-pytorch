@@ -201,7 +201,7 @@ def main():
     init_cap_params.depth_mode = sl.DEPTH_MODE.ULTRA
     init_cap_params.coordinate_units = sl.UNIT.METER
     init_cap_params.depth_stabilization = True
-    init_cap_params.camera_image_flip = False
+    init_cap_params.camera_image_flip = sl.FLIP_MODE.AUTO
     init_cap_params.coordinate_system = sl.COORDINATE_SYSTEM.RIGHT_HANDED_Y_UP
 
     cap = sl.Camera()
